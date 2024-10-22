@@ -39,15 +39,19 @@ end
 
 
 get("/random/new") do
-  erb(:hello)
+
+
+  erb(:random_calc)
 end
 
 get("/random/results") do
-  erb(:bye)
+  @the_min = params.fetch("user_min").to_f
+  @the_max = params.fetch("user_max").to_f
+
+  @the_result = rand * (@the_max - @the_min) + @the_min
+
+  erb(:random_results)
 end
-
-
-
 
 
 
@@ -64,8 +68,7 @@ get("/square/results") do
 end
 
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+
+  erb(:new_square_root_calc)
+
 end
